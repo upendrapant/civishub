@@ -5,6 +5,7 @@ import hospitalReportModel from "./models/hospitalReportModel.js";
 import patientDataModel from "./models/patientDataModel.js";
 import DOBModel from "./models/DOBModel.js";
 import CitizenshipModel from "./models/CitizenshipModel.js";
+import helmet from "helmet";
 import { rateLimit } from 'express-rate-limit'
 const limiter = rateLimit({
 	windowMs: 5 * 60 * 1000, // 5 minutes
@@ -17,7 +18,7 @@ const limiter = rateLimit({
 const app = express();
 
 app.use(limiter);
-
+app.use(helmet());
 
 // hospital
 app.get("/add-hospital", async (req, res) => {
