@@ -8,7 +8,7 @@ import { CivisHubLogo } from '@/components/ui/civishub-logo'
 
 const links = [
   { href: "#home", label: "Home" },
-  { href: "#features", label: "Features" },
+  { href: "#Features", label: "Features" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ]

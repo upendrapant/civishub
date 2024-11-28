@@ -1,13 +1,34 @@
 import Link from 'next/link'
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { BackgroundLines } from '@/components/ui/background-lines';
 
 export function HeroSection() {
+  const words = [
+    {
+      text: "One",
+    },
+    {
+      text: "Dashboard",
+    },
+    {
+      text: "for",
+    },
+    {
+      text: "all",
+    },
+    {
+      text: "Government Services.",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+  ]
   return (
+    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
     <section id="home" className="w-full min-h-screen py-3 md:py-24 lg:py-32 xl:py-48 bg-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              One Dashboard for All Your Government Services
+            <TypewriterEffectSmooth words={words} />
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
               Simplifying access to taxes, citizenship, and health records in one secure platform.
@@ -24,6 +45,7 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+  </BackgroundLines>
   )
 }
 
