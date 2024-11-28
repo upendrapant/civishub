@@ -1,34 +1,22 @@
-import React from 'react';
+import Link from 'next/link'
 
-interface LogoProps {
-  className?: string;
-}
-
-export const Logo: React.FC<LogoProps> = ({ className = "h-10 w-10" }) => {
+export function Logo() {
   return (
-    <div className={`flex items-center ${className}`}>
+    <Link href="/" className="flex items-center space-x-2">
       <svg
-        viewBox="0 0 100 100"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-full"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
       >
-        <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="4" />
-        <path
-          d="M50 20v60M20 50h60"
-          stroke="currentColor"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M35 35l30 30M65 35L35 65"
-          stroke="currentColor"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
+        <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
       </svg>
-      <span className="ml-2 text-xl font-bold">CivisHub</span>
-    </div>
-  );
-};
+      <span className="font-bold text-xl">Amazing Platform</span>
+    </Link>
+  )
+}
 
