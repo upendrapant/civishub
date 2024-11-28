@@ -39,16 +39,16 @@ app.get("/hospital/:hospital_id", async (req, res) => {
 app.get("/add-patient", async (req, res) => {
     try {
         const response = await patientDataModel.create({
-    patient_id: 1003,
-    Patient_name: "Kishor Gurung",
-    patient_address: "Chipledhunga, Pokhara",
-    Diagonosis: "Epilepsy",
-    Treatment: {
-    Medicines: ["Levetiracetam", "Valproic Acid"],
-    Precautions: "Take medicine on time, avoid sleep deprivation."
-    },
-    hospital_name: "Annapurna Neuro Hospital",
-    hospital_id: 3123
+            patient_id: 1003,
+            Patient_name: "Kishor Gurung",
+            patient_address: "Chipledhunga, Pokhara",
+            Diagonosis: "Epilepsy",
+            Treatment: {
+                Medicines: ["Levetiracetam", "Valproic Acid"],
+                Precautions: "Take medicine on time, avoid sleep deprivation."
+            },
+            hospital_name: "Annapurna Neuro Hospital",
+            hospital_id: 3123
         })
         res.json(response)
 
