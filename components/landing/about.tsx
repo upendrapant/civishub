@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export function About() {
   const { ref, isVisible } = useScrollAnimation()
@@ -32,8 +33,8 @@ export function About() {
               Our mission is to empower every citizen with the tools they need to navigate the complexities of modern governance effortlessly. We believe in transparency, efficiency, and security, and these principles are at the core of everything we do.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg">Learn More</Button>
-              <Button size="lg" variant="outline">Contact Us</Button>
+            <Link href="/sign-up"><Button size="lg">Learn More</Button></Link>
+              {/* <Button size="lg" variant="outline">Contact Us</Button> */}
             </div>
           </div>
         </motion.div>

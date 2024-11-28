@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import {Logo} from '@/components/ui/logo'
 import { CivisHubLogo } from '@/components/ui/herologo'
 import { BackgroundLines } from '../ui/background-lines'
+import Link from 'next/link'
 
 
 export function Hero() {
@@ -51,13 +52,15 @@ export function Hero() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="inline-flex items-center justify-center">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline">
+              <Link href="/sign-up">
+                <Button size="lg" className="inline-flex items-center justify-center">
+                  Get Started
+                 <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              {/* <Button size="lg" variant="outline">
                 Watch Demo
-              </Button>
+              </Button> */}
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-8">
               {[
