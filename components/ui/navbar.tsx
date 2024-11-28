@@ -1,16 +1,23 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-// import { Logo } from './logo'
 import { ArrowRight } from 'lucide-react'
 import { MobileMenu } from './mobile-menu'
 import { CivisHubLogo } from '@/components/ui/civishub-logo'
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
 const links = [
   { href: "#home", label: "Home" },
-  { href: "#Features", label: "Features" },
+  { href: "#features", label: "Features" },
   { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  // { href: "#contact", label: "Contact" },
 ]
 
 export function Navbar() {
@@ -65,13 +72,30 @@ export function Navbar() {
           ))}
         </nav>
         <div className="w-1/4 flex justify-end">
-          <a
+          {/* <a
             href="/login"
             className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 bg-blue-500 text-white shadow hover:bg-blue-600 h-9 px-4 py-2"
           >
             Login
             <ArrowRight className="ml-2 h-4 w-4" />
+          </a> */}
+          <ClerkProvider  >
+          <SignedOut>
+            {/* <SignInButton />
+             */}
+             <a
+            // href="<SignInButton />"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 bg-blue-500 text-white shadow hover:bg-blue-600 h-9 px-4 py-2"
+          >
+            {/* Login */}
+            <SignInButton />
+            <ArrowRight className="ml-2 h-4 w-4" />
           </a>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </ClerkProvider >
           <MobileMenu />
         </div>
       </div>

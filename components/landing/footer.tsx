@@ -1,24 +1,56 @@
-import Link from 'next/link'
-// import { Logo } from '@/components/ui/logo'
-import { CivisHubLogo } from '@/components/ui/civishub-logo'
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 export function Footer() {
   return (
-    <footer className="w-full py-6 bg-gray-800 text-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-          <CivisHubLogo className="h-32 w-32 text-black-600" />
+    <footer className="bg-background border-t">
+      <div className="container px-4 md:px-6 py-16">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-semibold">Stay Connected</h3>
+            <p className="text-sm text-muted-foreground">
+              Subscribe to our newsletter for updates on new features and important announcements.
+            </p>
+            <form className="flex w-full max-w-sm items-center space-x-2">
+              <Input type="email" placeholder="Enter your email" />
+              <Button type="submit">Subscribe</Button>
+            </form>
           </div>
-          <nav className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
-            <Link href="#home" className="hover:text-gray-300">Home</Link>
-            <Link href="#features" className="hover:text-gray-300">Features</Link>
-            <Link href="#about" className="hover:text-gray-300">About</Link>
-            <Link href="#contact" className="hover:text-gray-300">Contact</Link>
-          </nav>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold">Quick Links</h3>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm">
+                <a href="#home" className="hover:underline">Home</a>
+                <a href="#about" className="hover:underline">About Us</a>
+                <a href="#features" className="hover:underline">Features</a>
+              </nav>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Follow Us</h3>
+              <div className="flex mt-4 space-x-4">
+                <a href="#" className="text-muted-foreground hover:text-foreground">
+                  <Facebook className="h-6 w-6" />
+                  <span className="sr-only">Facebook</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-foreground">
+                  <Twitter className="h-6 w-6" />
+                  <span className="sr-only">Twitter</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-foreground">
+                  <Instagram className="h-6 w-6" />
+                  <span className="sr-only">Instagram</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-foreground">
+                  <Linkedin className="h-6 w-6" />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="mt-4 text-center text-sm text-gray-400">
-          © 2024 CivisHub. All rights reserved.
+        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+          © 2024 Digital Citizen Dashboard. All rights reserved.
         </div>
       </div>
     </footer>
