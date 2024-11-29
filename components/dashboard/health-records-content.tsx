@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -38,6 +38,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
 import { format } from "date-fns"
 
 export function HealthRecordsContent() {
@@ -228,6 +239,49 @@ export function HealthRecordsContent() {
       <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
         <CardHeader>
           <CardTitle className="text-blue-700 dark:text-blue-300">Recent Medical History</CardTitle>
+          <Drawer>
+              <DrawerTrigger asChild>
+                <div className="flex items justify-end">
+                  <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors">
+                   Perform Analysis
+                  </Button>
+                </div>
+              </DrawerTrigger>
+              <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>Performance Analysis</DrawerTitle>
+            <DrawerDescription>View key performance metrics for your web application.</DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 pb-0">
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Metrics</CardTitle>
+                <CardDescription>All times are in seconds</CardDescription>
+              </CardHeader>
+              <CardContent className="pb-2">
+              </CardContent>
+            </Card>
+            <div className="mt-4 space-y-2">
+              <h4 className="text-sm font-medium">Key Insights:</h4>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Page load time is within acceptable range</li>
+                <li>First Contentful Paint is good, indicating fast initial render</li>
+                <li>Time to Interactive could be improved</li>
+                <li>First Input Delay is excellent, showing good responsiveness</li>
+                <li>Cumulative Layout Shift is low, indicating stable layout</li>
+              </ul>
+            </div>
+          </div>
+          <DrawerFooter>
+            <Button>Generate Detailed Report</Button>
+            <DrawerClose asChild>
+              <Button variant="outline">Close</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+        </Drawer>
         </CardHeader>
         <CardContent>
           <Table>
