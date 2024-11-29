@@ -56,3 +56,65 @@ model Passport {
   createdAt         DateTime  @default(now())       
   updatedAt         DateTime  @updatedAt          
 }
+
+model Citizenship {
+  id                String    @id @default(uuid())  
+  citizenshipNumber String     
+  sex               String     
+  fullName          String     
+  dateOfBirth       DateTime  
+  birthPlaceAddress String   
+  permanentAddress  String    
+  fatherName        String     
+  motherName        String     
+  citizenshipType   String     
+  issuedDistrict    String     
+  issuedDate        DateTime   
+  issuedPerson      String    
+  createdAt         DateTime  @default(now())      
+  updatedAt         DateTime  @updatedAt          
+}
+ 
+
+model DrivingLicense {
+  id                  String    @id @default(uuid())  
+  dlNumber            String     
+  bloodGroup          String     
+  name                String     
+  address             String     
+  licenseOffice       String    
+  dob                 DateTime  
+  fatherName          String    
+  citizenshipNumber   String?   
+  licenseCategory     String    
+  passportNumber      String?   
+  contactNumber       String    
+  licenseDateOfIssue  DateTime  
+  licenseDateOfExpiry DateTime  
+  createdAt           DateTime  @default(now())     
+  updatedAt           DateTime  @updatedAt          
+}
+
+
+model VehicleBluebook {
+  id                   String    @id @default(uuid())  
+  vehicleNumberPlate   String     
+  vehicleType          String     
+  vehicleRegisteredDate DateTime  
+  vehicleOwnerName     String     
+  ownerAddress         String     
+  vehicleCompanyName   String    
+  vehicleModel         String     
+  manufacturedYear     Int       
+  numberOfCylinders    Int        
+  vehicleHertzPower    Float?     
+  chassisNumber        String     
+  engineNumber         String     
+  vehicleColor         String     
+  numberSeatCapacity   Int        
+  fuelType             String    
+  renewedDate          DateTime   
+  dateToBeRenewed      DateTime   
+  createdAt            DateTime  @default(now())     
+  updatedAt            DateTime  @updatedAt          
+}
