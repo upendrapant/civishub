@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Bell, Search, User, Menu } from 'lucide-react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useAuth, useUser } from '@clerk/nextjs'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,8 +30,15 @@ import {
 import { usePathname, useRouter } from "next/navigation"
 import { ModeToggle } from "@/components/ui/mode-toggle"
 import Link from "next/link"
+import { UserButton } from '@clerk/nextjs'
 
-export function Header() {
+
+
+
+
+
+
+export function Header ({ user }: { user: any }){
   const pathname = usePathname()
   const router = useRouter()
   const pathSegments = pathname.split('/').filter(Boolean)
@@ -110,11 +119,15 @@ export function Header() {
           </PopoverContent>
         </Popover>
         <ModeToggle />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
+        <UserButton afterSignOutUrl='/'/>
+        
+        {/* <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
-            </Button>
+              
+            </Button> */}
+        {/* <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -128,7 +141,7 @@ export function Header() {
             <DropdownMenuSeparator />
             <DropdownMenuItem>Log out</DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
       </div>
     </header>
   )

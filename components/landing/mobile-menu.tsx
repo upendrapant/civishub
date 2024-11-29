@@ -13,10 +13,11 @@ import {
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: "/features", label: "Features" },
+  { href: "/about", label: "About" }
 ]
+
+
 
 export function MobileMenu() {
   const [open, setOpen] = React.useState(false)

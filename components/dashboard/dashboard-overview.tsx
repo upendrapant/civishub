@@ -57,10 +57,10 @@ export function DashboardOverview() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-2">
-            <Button asChild><Link href="/taxes/file">File Taxes</Link></Button>
-            <Button asChild><Link href="/health/appointments">Schedule Health Appointment</Link></Button>
-            <Button asChild><Link href="/citizenship/renew-passport">Renew Passport</Link></Button>
-            <Button asChild><Link href="/notifications">View All Notifications</Link></Button>
+            <Button asChild><Link href="/dashboard/taxes">File Taxes</Link></Button>
+            <Button asChild><Link href="/dasgboard/health">Schedule Health Appointment</Link></Button>
+            <Button asChild><Link href="/dashboard/citizenship">Renew Passport</Link></Button>
+            <Button asChild><Link href="/dashboard/notifications">View All Notifications</Link></Button>
           </CardContent>
         </Card>
         <Card>

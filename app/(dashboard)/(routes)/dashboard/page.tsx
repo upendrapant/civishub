@@ -6,7 +6,6 @@ import { DashboardOverview } from "@/components/dashboard/dashboard-overview"
 export default function Home() {
   return (
     <div className="space-y-6">
-      <div><UserButton afterSignOutUrl="/"/></div>
       <DashboardOverview />
       <DashboardContent />
     </div>

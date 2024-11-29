@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { UserButton } from "@clerk/nextjs"
+
+
 
 export default function ProfilePage() {
   return (
@@ -10,9 +11,6 @@ export default function ProfilePage() {
       <Card>
         <CardHeader>
           <CardTitle>Personal Information</CardTitle>
-          <div className="justify-end">
-             <UserButton afterSignOutUrl="/" />
-          </div>
         </CardHeader>
         <CardContent>
           <form className="space-y-4">

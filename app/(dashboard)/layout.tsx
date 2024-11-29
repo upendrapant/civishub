@@ -7,6 +7,7 @@ import { Sidebar } from "@/components/dashboard/sidebar"
 import { Footer } from "@/components/dashboard/footer"
 import { Chatbot } from "@/components/dashboard/chatbot"
 import { ClerkProvider } from "@clerk/nextjs"
+import ServerHeader from "@/components/server-header"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <ServerHeader />
             <div className="flex flex-1 overflow-hidden">
               <Sidebar />
               <main className="flex-1 overflow-y-auto bg-background p-6">
