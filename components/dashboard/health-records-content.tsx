@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -9,72 +12,158 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { CalendarDays, FilePlus, Syringe, Activity, HeartPulse, ScaleIcon as Scales, Brain } from 'lucide-react'
+import { CalendarDays, FilePlus, Syringe, Activity, HeartPulse, ScaleIcon as Scales, Brain, Plus } from 'lucide-react'
 import Link from "next/link"
 import { Progress } from "@/components/ui/progress"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { format } from "date-fns"
 
 export function HealthRecordsContent() {
+  const [date, setDate] = useState<Date>()
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight">Health Records</h1>
-        <Button asChild>
-          <Link href="/health/appointments">Book Appointment</Link>
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors">
+              Book Appointment
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Book an Appointment</DialogTitle>
+              <DialogDescription>
+                Fill in the details to schedule your appointment.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input id="name" value="Hriday Sharma" className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="appointment-type" className="text-right">
+                  Type
+                </Label>
+                <Select>
+                  <SelectTrigger className="col-span-3">
+                    <SelectValue placeholder="Select appointment type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="general">General Check-up</SelectItem>
+                    <SelectItem value="specialist">Specialist Consultation</SelectItem>
+                    <SelectItem value="followup">Follow-up</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="appointment-date" className="text-right">
+                  Date
+                </Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant={"outline"}
+                      className={`col-span-3 justify-start text-left font-normal ${!date && "text-muted-foreground"}`}
+                    >
+                      {date ? format(date, "PPP") : <span>Pick a date</span>}
+                      <CalendarDays className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={setDate}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+            <Button type="submit" className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors">Book Appointment</Button>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Next Appointment</CardTitle>
-            <CalendarDays className="h-4 w-4 text-muted-foreground" />
+            <CalendarDays className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">June 15, 2024</div>
+            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">June 15, 2024</div>
             <p className="text-xs text-muted-foreground">Annual Check-up</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Vaccinations</CardTitle>
-            <Syringe className="h-4 w-4 text-muted-foreground" />
+            <Syringe className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Up to date</div>
+            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">Up to date</div>
             <p className="text-xs text-muted-foreground">Last updated: March 2024</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Recent Tests</CardTitle>
-            <FilePlus className="h-4 w-4 text-muted-foreground" />
+            <FilePlus className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">2</div>
+            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">2</div>
             <p className="text-xs text-muted-foreground">In the last 30 days</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Health Score</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+            <Activity className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">85/100</div>
+            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">85/100</div>
             <p className="text-xs text-muted-foreground">Based on recent check-ups</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader>
-            <CardTitle>Vital Statistics</CardTitle>
+            <CardTitle className="text-blue-700 dark:text-blue-300">Vital Statistics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center">
-                <HeartPulse className="mr-2 h-4 w-4 text-muted-foreground" />
+                <HeartPulse className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <div className="space-y-1 flex-1">
                   <p className="text-sm font-medium leading-none">
                     Blood Pressure
@@ -83,10 +172,10 @@ export function HealthRecordsContent() {
                     120/80 mmHg
                   </p>
                 </div>
-                <Badge>Normal</Badge>
+                <Badge className="bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100">Normal</Badge>
               </div>
               <div className="flex items-center">
-                <Scales className="mr-2 h-4 w-4 text-muted-foreground" />
+                <Scales className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <div className="space-y-1 flex-1">
                   <p className="text-sm font-medium leading-none">
                     Body Mass Index (BMI)
@@ -95,10 +184,10 @@ export function HealthRecordsContent() {
                     22.5
                   </p>
                 </div>
-                <Badge>Healthy</Badge>
+                <Badge className="bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100">Healthy</Badge>
               </div>
               <div className="flex items-center">
-                <Brain className="mr-2 h-4 w-4 text-muted-foreground" />
+                <Brain className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <div className="space-y-1 flex-1">
                   <p className="text-sm font-medium leading-none">
                     Stress Level
@@ -107,14 +196,14 @@ export function HealthRecordsContent() {
                     Moderate
                   </p>
                 </div>
-                <Progress value={60} className="w-[60px]" />
+                <Progress value={60} className="w-[60px]" indicatorClassName="bg-blue-600 dark:bg-blue-400" />
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader>
-            <CardTitle>Upcoming Screenings</CardTitle>
+            <CardTitle className="text-blue-700 dark:text-blue-300">Upcoming Screenings</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -128,7 +217,7 @@ export function HealthRecordsContent() {
                       Due: {screening.dueDate}
                     </p>
                   </div>
-                  <Button variant="outline" size="sm">Schedule</Button>
+                  <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900 dark:hover:text-blue-300">Schedule</Button>
                 </div>
               ))}
             </div>
@@ -136,9 +225,9 @@ export function HealthRecordsContent() {
         </Card>
       </div>
 
-      <Card>
+      <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
         <CardHeader>
-          <CardTitle>Recent Medical History</CardTitle>
+          <CardTitle className="text-blue-700 dark:text-blue-300">Recent Medical History</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -153,17 +242,17 @@ export function HealthRecordsContent() {
             </TableHeader>
             <TableBody>
               {medicalHistory.map((item, index) => (
-                <TableRow key={index}>
+                <TableRow key={index} className="hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors">
                   <TableCell>{item.date}</TableCell>
                   <TableCell>{item.type}</TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>
-                    <Badge variant={item.status === "Completed" ? "success" : "warning"}>
+                    <Badge variant={item.status === "Completed" ? "success" : "warning"} className={item.status === "Completed" ? "bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100" : "bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100"}>
                       {item.status}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Button variant="ghost" size="sm">View Details</Button>
+                    <Button variant="ghost" size="sm" className="hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900 dark:hover:text-blue-300">View Details</Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -173,9 +262,9 @@ export function HealthRecordsContent() {
       </Card>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader>
-            <CardTitle>Prescriptions</CardTitle>
+            <CardTitle className="text-blue-700 dark:text-blue-300">Prescriptions</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-4">
@@ -185,25 +274,55 @@ export function HealthRecordsContent() {
                     <p className="font-medium">{prescription.name}</p>
                     <p className="text-sm text-muted-foreground">Dosage: {prescription.dosage}</p>
                   </div>
-                  <Badge variant="outline">{prescription.refillDate}</Badge>
+                  <Badge variant="outline" className="text-blue-600 dark:text-blue-300">{prescription.refillDate}</Badge>
                 </li>
               ))}
             </ul>
-            <Button className="w-full mt-4">Refill Prescriptions</Button>
+            <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors">Refill Prescriptions</Button>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700">
           <CardHeader>
-            <CardTitle>Health Resources</CardTitle>
+            <CardTitle className="text-blue-700 dark:text-blue-300">Health Resources</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-primary hover:underline">Find a Doctor</Link></li>
-              <li><Link href="#" className="text-primary hover:underline">Health Insurance Information</Link></li>
-              <li><Link href="#" className="text-primary hover:underline">Wellness Programs</Link></li>
-              <li><Link href="#" className="text-primary hover:underline">Medical Records Request</Link></li>
-              <li><Link href="#" className="text-primary hover:underline">Telemedicine Services</Link></li>
-              <li><Link href="#" className="text-primary hover:underline">Mental Health Resources</Link></li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Find a Doctor
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Health Insurance Information
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:tex-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Wellness Programs
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:tex-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Medical Records Request
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:tex-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Telemedicine Services
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-blue-600 hover:tex-200 hover:underline flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Mental Health Resources
+                </Link>
+              </li>
             </ul>
           </CardContent>
         </Card>
