@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { MobileMenu } from './mobile-menu'
 import { CivisHubLogo } from '@/components/ui/civishub-logo'
+import { checkUser } from '@/lib/checkUser'
+import { UserButton } from '@clerk/nextjs'
 
 
 const links = [
@@ -43,6 +45,7 @@ export function Navbar() {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

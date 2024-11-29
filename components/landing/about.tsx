@@ -33,7 +33,7 @@ export function About() {
               Our mission is to empower every citizen with the tools they need to navigate the complexities of modern governance effortlessly. We believe in transparency, efficiency, and security, and these principles are at the core of everything we do.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <Link href="/sign-up"><Button size="lg">Learn More</Button></Link>
+            <Link href="#features"><Button size="lg">Learn More</Button></Link>
               {/* <Button size="lg" variant="outline">Contact Us</Button> */}
             </div>
           </div>

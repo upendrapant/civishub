@@ -3,9 +3,11 @@ import { Inter } from "next/font/google"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/dashboard/header"
-// import { Sidebar } from "@/components/sidebar"
-// import { Footer } from "@/components/footer"
-// import { Chatbot } from "@/components/chatbot"
+import { Sidebar } from "@/components/dashboard/sidebar"
+import { Footer } from "@/components/dashboard/footer"
+import { Chatbot } from "@/components/dashboard/chatbot"
+import { ClerkProvider } from "@clerk/nextjs"
+import ServerHeader from "@/components/server-header"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,6 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
@@ -29,19 +32,20 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <ServerHeader />
             <div className="flex flex-1 overflow-hidden">
-              {/* <Sidebar /> */}
+              <Sidebar />
               <main className="flex-1 overflow-y-auto bg-background p-6">
                 {children}
               </main>
             </div>
-            {/* <Footer /> */}
+            <Footer />
           </div>
-          {/* <Chatbot /> */}
+          <Chatbot />
         </ThemeProvider>
       </body>
     </html>
+  </ClerkProvider>
   )
 }
 
