@@ -37,3 +37,22 @@ model MedicalReport {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 }
+
+model Passport {
+  id                String    @id @default(uuid()) 
+  passportNumber    String    
+  passportType      String    
+  countryCode       String     
+  givenName         String     
+  surName           String    
+  nationality       String     
+  sex               String    
+  citizenshipNumber String?    
+  dateOfBirth       DateTime  
+  placeOfBirth      String    
+  dateOfIssue       DateTime  
+  dateOfExpiry      DateTime  
+  issuingAuthority  String     
+  createdAt         DateTime  @default(now())       
+  updatedAt         DateTime  @updatedAt          
+}
