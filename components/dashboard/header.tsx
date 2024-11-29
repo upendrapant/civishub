@@ -28,7 +28,6 @@ import {
 import { usePathname, useRouter } from "next/navigation"
 import { ModeToggle } from "@/components/ui/mode-toggle"
 import Link from "next/link"
-import { CivisHubLogo } from '../ui/civishub-logo'
 
 export function Header() {
   const pathname = usePathname()
@@ -49,7 +48,7 @@ export function Header() {
         <Button variant="ghost" size="icon" className="md:hidden">
           <Menu className="h-5 w-5" />
         </Button>
-        <h1 className="text-xl font-bold"><CivisHubLogo className="h-32 w-32 text-black-600" /></h1>
+        <h1 className="text-xl font-bold">CivisHub</h1>
         <Breadcrumb className="hidden md:inline-flex">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -88,7 +87,7 @@ export function Header() {
             <Button variant="ghost" size="icon" className="relative">
               <Bell className="h-5 w-5" />
               <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground">
-                3
+                {notifications.length}
               </span>
             </Button>
           </PopoverTrigger>
@@ -120,9 +119,12 @@ export function Header() {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Language</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard/profile">Profile</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard/setting">Settings</Link>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Log out</DropdownMenuItem>
           </DropdownMenuContent>

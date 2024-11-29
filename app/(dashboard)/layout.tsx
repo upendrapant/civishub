@@ -4,8 +4,9 @@ import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/dashboard/header"
 import { Sidebar } from "@/components/dashboard/sidebar"
-// import { Footer } from "@/components/footer"
-// import { Chatbot } from "@/components/chatbot"
+import { Footer } from "@/components/dashboard/footer"
+import { Chatbot } from "@/components/dashboard/chatbot"
+import { ClerkProvider } from "@clerk/nextjs"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
@@ -36,12 +38,13 @@ export default function RootLayout({
                 {children}
               </main>
             </div>
-            {/* <Footer /> */}
+            <Footer />
           </div>
-          {/* <Chatbot /> */}
+          <Chatbot />
         </ThemeProvider>
       </body>
     </html>
+  </ClerkProvider>
   )
 }
 

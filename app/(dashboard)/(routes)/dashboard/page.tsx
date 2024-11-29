@@ -1,8 +1,14 @@
 import { UserButton } from "@clerk/nextjs"
 
+import { DashboardContent } from "@/components/dashboard/dashboard-content"
+import { DashboardOverview } from "@/components/dashboard/dashboard-overview"
+
 export default function Home() {
-    return <div>Dashboard
-      <UserButton afterSignOutUrl="/"/>
+  return (
+    <div className="space-y-6">
+      <div><UserButton afterSignOutUrl="/"/></div>
+      <DashboardOverview />
+      <DashboardContent />
     </div>
-  }
-  
+  )
+}
