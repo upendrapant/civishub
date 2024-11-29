@@ -15,10 +15,10 @@ export default function SearchPage() {
     if (query) {
       // Simulated search results
       const simulatedResults = [
-        { title: "Tax Filing Guide", category: "Taxes", url: "/taxes/guide" },
-        { title: "Health Records Access", category: "Health", url: "/health/records" },
-        { title: "Passport Renewal Process", category: "Citizenship", url: "/citizenship/passport" },
-        { title: "Voter Registration", category: "Citizenship", url: "/citizenship/voter-registration" },
+        { title: "Tax Filing Guide", category: "Taxes", url: "/dashboard/taxes/guide" },
+        { title: "Health Records Access", category: "Health", url: "/dashboard/health/records" },
+        { title: "Passport Renewal Process", category: "Citizenship", url: "/dashboard/citizenship/passport" },
+        { title: "Voter Registration", category: "Citizenship", url: "/dashboard/citizenship/voter-registration" },
       ].filter(item => 
         item.title.toLowerCase().includes(query.toLowerCase()) ||
         item.category.toLowerCase().includes(query.toLowerCase())
