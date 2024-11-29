@@ -28,6 +28,7 @@ import {
 import { usePathname, useRouter } from "next/navigation"
 import { ModeToggle } from "@/components/ui/mode-toggle"
 import Link from "next/link"
+import { CivisHubLogo } from '../ui/civishub-logo'
 
 export function Header() {
   const pathname = usePathname()
@@ -48,7 +49,7 @@ export function Header() {
         <Button variant="ghost" size="icon" className="md:hidden">
           <Menu className="h-5 w-5" />
         </Button>
-        <h1 className="text-xl font-bold">Digital Citizen Dashboard</h1>
+        <h1 className="text-xl font-bold"><CivisHubLogo className="h-32 w-32 text-black-600" /></h1>
         <Breadcrumb className="hidden md:inline-flex">
           <BreadcrumbList>
             <BreadcrumbItem>
