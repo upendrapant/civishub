@@ -135,10 +135,10 @@ export function DashboardOverview() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-2">
-            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/taxes/file">File Taxes</Link></Button>
-            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/health/appointments">Schedule Health Appointment</Link></Button>
-            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/citizenship/renew-passport">Renew Passport</Link></Button>
-            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/notifications">View All Notifications</Link></Button>
+            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/dashboard/taxes/file">File Taxes</Link></Button>
+            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/dashboard/health">Schedule Health Appointment</Link></Button>
+            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/dashboatrd/citizenship/">Renew Passport</Link></Button>
+            <Button asChild className="bg-blue-500 hover:bg-blue-600"><Link href="/dashboard/notifications">View All Notifications</Link></Button>
           </CardContent>
         </Card>
         <Card className="transition-all hover:shadow-md hover:border-blue-500">
